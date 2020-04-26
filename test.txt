@@ -1,0 +1,17 @@
+int func(float x , int y , bool z , int arr[]){
+if (arr[x] > 10 &&  y >= 20){
+	value = 10 * value + 10 * 90 + sa -ww ;
+}
+while(s > 10){
+	printf(s);
+	s = s -1;
+}
+}
+int r;
+int main(){
+float x;
+int y;
+bool z; //its Comment
+int arr[] = new int [10]; 
+func(x,y,z,arr);
+}

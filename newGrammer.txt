@@ -1,0 +1,44 @@
+﻿program → decl_list 
+decl_list → decl new_decl_list
+new_decl_list → decl new_decl_list | ε
+decl → var_decl | fun_decl 
+var_decl → type_spec IDENTnew_var_decl ; 
+new_var_decl → [] | ε 
+type_spec → VOID | BOOL | INT | FLOAT 
+fun_decl → type_spec IDENT ( params ) compound_stmt 
+params → param_list | VOID 
+param_list → param new_param_list
+new_param_list → , param new_param_list | ε  
+param → type_spec IDENTnew_var_decl
+
+
+stmt_list → new_stmt_list
+new_stmt_list → stmt new_stmt_list | ε 
+stmt → expr_stmt | compound_stmt | if_stmt | while_stmt |  return_stmt | break_stmt 
+
+expr_stmt → expr ; | ; 
+while_stmt → WHILE ( expr ) stmt
+compound_stmt → { local_decls stmt_list } 
+local_decls → new_local_decls
+new_local_decls → local_decl new_local_decls | ε
+local_decl → type_spec IDENTnew_local_decl ; 
+new_local_decl → [] | ε
+if_stmt → IF ( expr ) stmt new_if_stmt 
+new_if_stmt → ELSE stmt | ε
+return_stmt → RETURN new_return_stmt ;
+new_return_stmt → expr | ε  
+
+
+expr -> IDENT new_expr1 | 
+         expr new_expr2  |
+          ! expr | - expr | + expr |
+           ( expr ) |
+           BOOL_LIT | INT_LIT | FLOAT_LIT | NEW type_spec [ expr ]  
+new_expr1 -> [ expr ] = expr | = expr | [ expr ] | ( args ) |. size | ε
+new_expr2 -> OR expr |  EQ expr | NE expr |  LE expr |  < expr | GE expr |  > expr|
+ AND expr | * expr | / expr | % expr  | - expr | + expr
+
+arg_list -> expr arg_listM
+arg_listM -> , expr arg_listM | E
+args → arg_list | ε
+

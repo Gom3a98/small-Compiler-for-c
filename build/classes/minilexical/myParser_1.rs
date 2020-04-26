@@ -1,0 +1,2 @@
+minilexical.myParser
+minilexical.myParser$TokenInfo
